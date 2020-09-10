@@ -4,21 +4,16 @@ using namespace std;
 
 int main(){
     int n,i; cin >> n;
-    string s[n], ans="TRUTH";
+    string s,tmp;
 
     for(i=0;i<n;i++){
-        cin >> s[i];
-    }
-
-    for(i=n-1;i>0;i--){
-        if(i==n-1){
-            if(s[i]=="TRUTH" && s[i-1]=="LIE") ans="LIE";
-            else if (s[i]=="LIE" && s[i-1]=="TRUTH") ans="LIE";
+        cin >> s;
+        if(i!=0){
+            if(tmp=="LIE"&&s=="LIE") tmp="TRUTH";
+            else if(tmp=="TRUTH"&&s=="LIE") tmp="LIE";
         }else{
-            if(s[i-1]=="LIE" && ans=="TRUTH") ans="LIE";
-            else if(s[i-1]=="TRUTH" && ans=="LIE") ans="LIE";
-            else if(s[i-1]==ans) ans="TRUTH";
+            tmp=s;
         }
     }
-    cout << ans;
+    cout << tmp;
 }
